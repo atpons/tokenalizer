@@ -4,7 +4,7 @@ require "dotenv"
 Dotenv.load
 
 set :bind, '0.0.0.0'
-set :port, 80
+set :port, 8888
 
 get "/" do
   @file = File.open(ENV["file"], "r")
