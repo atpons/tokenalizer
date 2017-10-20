@@ -1,5 +1,6 @@
 require "sinatra"
 require "dotenv"
+require 'sinatra/reloader'
 
 Dotenv.load
 
