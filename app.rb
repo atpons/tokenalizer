@@ -1,6 +1,11 @@
 require "sinatra"
 require "dotenv"
 
+Dotenv.load
+
+set :bind, '0.0.0.0'
+set :port, 80
+
 get "/" do
   @file = File.open(ENV["file"], "r")
   @token = @file.read
