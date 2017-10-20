@@ -39,6 +39,17 @@
       });
   });
   </script>
+  <style type="text/css">
+#CDT{
+ font-size: 26px;
+}
+#CDT .day{
+ font-size: 48px;
+}
+#CDT .hour,#CDT .min,#CDT .sec{
+ font-size: 32px;
+}
+</style>
 </head>
 <body>
 <div id="square">
@@ -77,12 +88,17 @@
         }
 
     </style>
-    <form action="/token" method="get">
+     <form action="/" method="get">
+      <button class="button-success pure-button">このページを更新する</button>
+    </form>
+
+   <form action="/token" method="get">
       <button class="button-warning pure-button">PINを再生成する</button>
     </form>
 
+    <strong>「再生成が必要です」が表示された場合は</strong><br><strong>「PINを再生成する」をクリックしてください</strong>
+<p>PINの更新まで</p>
     <div id="CDT"></div>
-
 <script language="JavaScript" type="text/javascript">
 function CountdownTimer(elm,tl,mes){
  this.initialize.apply(this,arguments);
@@ -115,8 +131,8 @@ CountdownTimer.prototype={
  },addZero:function(num){ return ('0'+num).slice(-2); }
 }
 function CDT(){
- var tl = new Date('2036/1/1 00:00:00');
- var timer = new CountdownTimer('CDT',tl,'終了しました');
+ var tl = new Date('<%= @aftermtime.strftime("%Y/%m/%d %H:%M:%S") %>');
+ var timer = new CountdownTimer('CDT',tl,'再生成が必要です');
  timer.countDown();
 }
 window.onload=function(){

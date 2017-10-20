@@ -11,6 +11,7 @@ get "/" do
   @file = File.open(ENV["file"], "r")
   @token = @file.read
   @mtime = @file.mtime
+  @aftermtime = @mtime + 600
   @file.close
   erb :index
 end
