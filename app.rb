@@ -1,7 +1,8 @@
 require "sinatra"
+require "dotenv"
 
 get "/" do
-  @file = File.open("token.txt", "r")
+  @file = File.open(ENV["file"], "r")
   @token = @file.read
   @mtime = @file.mtime
   @file.close
@@ -9,7 +10,7 @@ get "/" do
 end
 
 get "/token" do
-  file = File.open("token.txt", "w+")
+  file = File.open(ENV["file"], "w+")
   file.puts rand(1000..9999)
   file.close
   redirect "/"
